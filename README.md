@@ -25,7 +25,7 @@ On peut recommencer l'opération! Nous avons maintenant 12 segments. Découpons-
 Et ainsi de suite: voici un flocon avec 192 segments:  
 ![](images/flocon3.gif)
 
-N'ayons peur de rien... voici des flocons avec 768 ou même 3072 ou 12288 côtés... mais ça devient un peu long à dessiner, n'est-ce pas?
+N'ayons peur de rien... voici des flocons avec 768 ou même 3072 ou 12288 côtés... mais ça devient un peu long à dessiner, n'est-ce pas?  
 ![](images/flocon4.png) ![](images/flocon5.png) ![](images/flocon6.png)
 
 ### Quel est le périmètre du Flocon?
