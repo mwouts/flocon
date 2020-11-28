@@ -256,13 +256,22 @@ Vous pouvez générer vous-même les fichiers STL (F5, F6 puis F7 dans OpenSCAD,
 Pour imprimer, ouvrez le fichier dans Cura:  
 ![](images/flocon_4_cura.png)
 
-Choisissez la mise à l'échelle qui vous convient... souvenez-vous que si vous imprimez 2x plus petit, le résultat sera 8x plus rapide... ou bien armez-vous de patience!
+Choisissez la mise à l'échelle qui vous convient... souvenez-vous que si vous imprimez 2x plus petit, le résultat sera 8x plus rapide... ou bien armez-vous de patience! Notez également que vous pouvez modifier l'épaisseur des triangles si vous le souhaitez, en ouvrant le fichier [`flocon_3d_imprimable.scad`](source/flocon_3d_imprimable.scad) dans OpenSCAD.
 
+Voici quelques images de l'impression 3D:  
+![](images/impression1.jpg) ![](images/impression2.jpg) ![](images/impression3.jpg) 
 
+Et au bout de deux jours d'impression...  
+![](images/impression4.jpg)
 
+Nous avons imprimé plusieurs modèles, en modulant la taille de façon à ce que les petits triangles aient tous la même taille:  
+![](images/tailles_multiples.jpg)
 
-- donner un peu de volume avant d'imprimer
-- impression (vidéo)
-- reconstruire le flocon entier (avec 4 faces) ==>... on obtient un cube!
-- d'autres applications = les poupées russes (vidéo)
-- et les chapeaux de princesses
+### Que faire avec ces flocons?
+
+- Reconstruire le flocon en entier?
+- Encore une étape de récurrence
+- Poupées russes
+
+Même les plus jeunes ont trouvé des usages à ces fractales en trois dimensions:  
+![](images/chapeaux.jpg)
