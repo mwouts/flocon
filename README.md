@@ -223,19 +223,23 @@ Faites attention à ne pas mettre de trop grandes valeurs... Rappelez-vous que p
 
 Avez-vous comme nous trouvé le résultat un peu décevant? Ne trouvez-vous pas que la surface du Flocon en 3D converge vers une forme très simple? un simple tétraèdre irrégulier (d'une hauteur égale à la moitié de la hauteur du tétraèdre régulier). Pour vérifier qu'on ne s'était pas trompé on a encore utilisé [Wikipedia](https://fr.wikipedia.org/wiki/Flocon_de_Koch).
 
-Allons-voir par exemple la face du [Flocon 3D avec `n=4`](stl/face_flocon_4.stl):  
-![](images/face_flocon3d_4.gif)
+Allons voir par exemple la face du [Flocon 3D avec `n=4`](stl/face_flocon_4.stl):  
+[![](images/face_flocon3d_4.gif)](stl/face_flocon_4.stl)
 
-En fait, le Flocon 3D est beaucoup plus intéressant lorsqu'on le retourne!  
-![](images/face_flocon3d_4_interieur.gif)
+Un peu trop régulier pour une fractale, n'est-ce pas?
+
+En fait, on voit le côté fractal du flocon en 3D seulement lorsqu'on le retourne!  
+[![](images/face_flocon3d_4_interieur.gif)](stl/face_flocon_4.stl)
 
 ### Imprimer le Flocon
 
-Nous avons découvert l'impression 3D pendant le premier confinement... C'est très simple: l'imprimante fait fondre du plastique, et dépose le plastique fondu pour construire la forme demandée. Bon c'est un peu lent... et pas toujours facile!
+Nous avons découvert l'impression 3D pendant le premier confinement... C'est très simple: l'imprimante construire progressivement la forme demandée en faisant fondre un fil de plastique. C'est génial... mais bon, c'est un peu lent... et pas toujours facile à régler!
 
-Par exemple, si nous ouvrons les fichiers STL créés plus haut avec [Ultimaker Cura](https://ultimaker.com/fr/software/ultimaker-cura), le logiciel qui détermine la trajectoire de la tête d'impression, on trouve une consommation de plastique de 0 grammes, et un temps zéro... autrement dit rien ne va s'imprimer!
+Dans le cas du Flocon 3D, le premier problème que nous avons rencontré, c'est que notre Flocon faisait 0 grammes... l'imprimante n'imprimait rien du tout!
 
-La raison pour cela, c'est que nos fichiers STL décrivent uniquement une _surface_, et non pas un _volume_. Si on veut vraiment imprimer le Flocon, il va falloir lui donner un peu d'épaisseur, et remplacer la forme de base, i.e. le `triangle()`, par un volume qui ressemblera au triangle et qui aura un peu de matière.
+Vous allez rencontrer le même problème si vous tentez d'imprimer les fichier STL que nous avons générés jusqu'à présent. En effet, nos fichiers STL décrivent uniquement une _surface_, et non pas un _volume_. 
+
+Si on veut vraiment imprimer le Flocon, il va falloir lui donner un peu d'épaisseur, et remplacer la forme de base, i.e. le `triangle()`, par un volume qui _ressemblera_ au triangle et qui aura un peu de matière.
 
 Nous avons fait cela avec la fonction suivante:
 ```
@@ -248,30 +252,55 @@ polyhedron(
     faces=[[0,1,2], [1,0,3,4], [2,1,4,5], [0,2,5,3], [5,4,3]]);
 };
 ```
-dans le fichier [`source/flocon_3d_imprimable.scad`](source/flocon_3d_imprimable.scad). Notez que, pour éviter que les triangles deviennent trop fins lorsqu'on applique la récursion, nous multiplions l'argument `h` par 2 à chaque étape, pour compenser le changement d'échelle. Le résultat est la forme suivante:  
+dans le fichier [`flocon_3d_imprimable.scad`](source/flocon_3d_imprimable.scad). Notez que, pour éviter que les triangles deviennent trop fins lorsqu'on applique la récursion, nous multiplions l'argument `h` par 2 à chaque étape, pour compenser le changement d'échelle. Le résultat est la forme suivante:  
 ![](images/flocon_3d_imprimable.png)
 
 Vous pouvez générer vous-même les fichiers STL (F5, F6 puis F7 dans OpenSCAD, ça prend un certain temps même pour `n=4`) ou bien les récupérer dans le dossier [`stl_imprimables`](stl_imprimables).
 
-Pour imprimer, ouvrez le fichier dans Cura:  
+Pour imprimer, ouvrez le fichier dans [Cura Ultimaker](https://ultimaker.com/fr/software/ultimaker-cura):  
 ![](images/flocon_4_cura.png)
 
-Choisissez la mise à l'échelle qui vous convient... souvenez-vous que si vous imprimez 2x plus petit, le résultat sera 8x plus rapide... ou bien armez-vous de patience! Notez également que vous pouvez modifier l'épaisseur des triangles si vous le souhaitez, en ouvrant le fichier [`flocon_3d_imprimable.scad`](source/flocon_3d_imprimable.scad) dans OpenSCAD.
+Choisissez la mise à l'échelle qui vous convient... souvenez-vous que si vous imprimez 2x plus petit, le résultat sera 8x plus rapide... ou bien armez-vous de patience! Notez que vous pouvez modifier l'épaisseur des triangles si vous le souhaitez, en ouvrant le fichier [`flocon_3d_imprimable.scad`](source/flocon_3d_imprimable.scad) dans OpenSCAD et en changeant le paramètre `h`.
 
 Voici quelques images de l'impression 3D:  
-![](images/impression1.jpg) ![](images/impression2.jpg) ![](images/impression3.jpg) 
+| Après 10 minutes | Après 2 heures | Un jour plus tard | Deux jours plus tard |
+| --- | --- | --- | --- |
+| ![](images/impression1.jpg) | ![](images/impression2.jpg) | ![](images/impression3.jpg) | ![](images/impression4.jpg) |
 
-Et au bout de deux jours d'impression...  
-![](images/impression4.jpg)
+![](images/impression.gif)
+
+Nous avons préféré imprimer _sans support_, car extraire le support d'impression semblait quasiment impossible vu la structure fractale de notre flocon. L'inconvénient, c'est que l'impression n'est pas parfaite... les fils lancés au dessus du vide pendent parfois un peu.
 
 Nous avons imprimé plusieurs modèles, en modulant la taille de façon à ce que les petits triangles aient tous la même taille:  
-![](images/tailles_multiples.jpg)
+![](images/famille_de_flocons.jpg)
 
-### Que faire avec ces flocons?
+## Que faire avec ces flocons?
 
-- Reconstruire le flocon en entier?
-- Encore une étape de récurrence
-- Poupées russes
+Nous avons trouvé beaucoup de jeux à faire avec ces pièces!
 
-Même les plus jeunes ont trouvé des usages à ces fractales en trois dimensions:  
+### Finissons le flocon!
+
+Nous n'avons imprimé que les faces du flocon. Souvenez-vous que la forme de départ est un tétraèdre, non un triangle... Prenons donc quatre faces, et assemblons-les. Surprise!! On obtient un CUBE!
+
+![](images/flocon_3d_complet.gif)
+
+![](images/flocon_3d_complet.jpg)
+
+### Les poupées russes
+
+Les petits flocons se cachent dans les grands:  
+![](images/poupees_russes.gif)
+
+### La récurrence recommencée
+
+Avec six faces petit modèle, on peut reproduire le grand modèle. C'est comme dans notre programme!  
+![](images/flocon_3d_recurrence.gif)
+
+### La Pyramide
+
+![](images/flocon_3d_pyramide.jpg)
+
+### Les chapeaux
+
+Les flocons ont également inspiré notre très jeune modiste de 3 ans:  
 ![](images/chapeaux.jpg)
