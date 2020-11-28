@@ -135,24 +135,39 @@ Nous sommes prêts! D'ailleurs, si vous voulez essayer avec nous, le programme e
 
 Le Flocon de Von Koch en 2D est super sympa... alors on a eu envie de passer à la 3D.
 
-On a commencé par contruire le tétrahèdre avec [OpenSCAD](https://www.openscad.org/). Un tétrahèdre c'est un polyèdre régulier fait de 4 faces égales, chacune de ces faces étant un triangle équilatéral.
+On a commencé par contruire le tétraèdre avec [OpenSCAD](https://www.openscad.org/). Un tétraèdre c'est un polyèdre régulier dont les 4 faces sont des triangle équilatéraux.
 
-Dans OpenSCAD, on créé le tétrahèdre en donnant les coordonnées de tous ses points, puis en énumérant tout les faces. Le code entier s'écrit
+Dans OpenSCAD, on créé le tétraèdre en donnant les coordonnées de tous les points, puis en énumérant tout les faces. Le code s'écrit
 
 ```
-H = sqrt(3);
-T = 2 * sqrt(6) / 3;
+H = sqrt(3);         // C'est la hauteur d'un triangle équilatéral de côté 2
+T = 2 * sqrt(6) / 3; // C'est la hauteur d'un tétraèdre régulier de côté 2
 
 polyhedron(
-    points=[[-1,0,0], [1,0,0], [0,H,0], [0,H/3,T]],
-    faces=[[0,1,2], [3,2,1], [3,1,0], [3,0,2]]
+    // Les 4 sommets du tétraèdre
+    points=[
+        // 4 points avec à chaque fois les trois coordonnées: x, y, z
+        [-1,0,0], [1,0,0], [0,H,0], [0,H/3,T]
+        ],
+    
+    // Les 4 triangles qui forment le tétraèdre
+    faces=[
+        // 4 faces qui relient chacune 3 sommets
+        [0,1,2], [3,2,1], [3,1,0], [3,0,2]
+        ]
     );
 ```
 
-Remarquez que les deux premiers sommets sont sur l'axe `x`, aux coordonnées `-1` et `+1`. Le troisième sommet est à `y=√3`, c'est la hauteur d'un triangle équilatéral de côté `2`. Et le troisième sommet est à une hauteur `2√6/3` (car notre tétraèdre a des côtés de taille 2), et il est situé au-dessus du centre de gravité du triangle horizontal.
+Comment a-t-on déterminé les coordonnées des sommets?
+- Nous avons d'abord placé les deux premiers sommets sur l'axe `x`, aux coordonnées `-1` et `+1`. Notre tétraèdre aura donc un côté égal à 2.
+- Puis nous avons cherché la [hauteur du triangle équilatéral](https://fr.wikipedia.org/wiki/Triangle_%C3%A9quilat%C3%A9ral) sur Wikipedia. La hauteur est égale à `√3/2` fois le côté. Nous plaçons donc le troisième sommet à `y=√3`.
+- Le sommet du tétraèdre est au dessus du centre de gravité du triangle horizontal, au tiers de la hauteur du triangle. Il aura donc pour coordonnée `y=√3/3`. 
+- Enfin, Wikipedia nous dit que la [hauteur du tétraèdre](https://fr.wikipedia.org/wiki/T%C3%A9tra%C3%A8dre) est égale à `√6/3` fois son côté. Nous choisissons donc `z=2√6/3` pour ce point.
 
-On execute le code dans OpenSCAD avec F5 (preview), puis fait F6 (render) et après on peut l'exporter comme un fichier STL:
+Dans OpenSCAD, on execute le code avec F5 (preview), et on obtient ceci:  
+![](images/tetrahedron.png)
 
-![](stl/tetrahedron.stl)
+OpenSCAD permet aussi d'exporter les fichiers 3D au format STL (F6 puis F7). Vous pouvez voir notre tétraèdre au format STL [ici](stl/tetrahedron.stl).
+
 
 
