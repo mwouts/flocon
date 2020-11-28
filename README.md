@@ -2,11 +2,9 @@
 
 # Le Flocon de Von Koch, de la 2D à la 3D
 
-Sommaire
-- Flocon de Von Koch
-- La programmation avec Scratch
-- Des mathématiques amusantes (une courbe de longueur infinie?)
-- Et si on passait à la 3D?
+## Introduction
+
+Bienvenue! Ceci est un article que nous écrivons à six mains: Marc, le Papa, mathématicien et un peu bricoleur à ses heures, et ses enfants de 12 et 8 ans. Nous avons commencé par explorer quelques concepts mathématiques à partir du Flocon de Von Koch, chacun y a apporté beaucoup d'enthousiasme et nous sommes finalement allés beaucoup plus loin que prévu... jusqu'à la programmation en Scratch, l'impression 3D, et finalement l'écriture de cet article. Autant dire que nous avons passé de supers moments sur ce projet... et nous souhaitons maintenant vous en faire profiter!
 
 ## Le Flocon de Von Koch
 
@@ -135,6 +133,8 @@ Nous sommes prêts! D'ailleurs, si vous voulez essayer avec nous, le programme e
 
 Le Flocon de Von Koch en 2D est super sympa... alors on a eu envie de passer à la 3D.
 
+## Le tétraèdre
+
 On a commencé par contruire le tétraèdre avec [OpenSCAD](https://www.openscad.org/). Un tétraèdre c'est un polyèdre régulier dont les 4 faces sont des triangle équilatéraux.
 
 Dans OpenSCAD, on créé le tétraèdre en donnant les coordonnées de tous les points, puis en énumérant tout les faces. Le code s'écrit
@@ -152,7 +152,7 @@ polyhedron(
     
     // Les 4 triangles qui forment le tétraèdre
     faces=[
-        // 4 faces qui relient chacune 3 sommets
+        // 4 faces qui relient chacune 3 sommets (les 4 sommets sont numérotés de 0 à 3)
         [0,1,2], [3,2,1], [3,1,0], [3,0,2]
         ]
     );
@@ -167,7 +167,102 @@ Comment a-t-on déterminé les coordonnées des sommets?
 Dans OpenSCAD, on execute le code avec F5 (preview), et on obtient ceci:  
 ![](images/tetrahedron.png)
 
-OpenSCAD permet aussi d'exporter les fichiers 3D au format STL (F6 puis F7). Vous pouvez voir notre tétraèdre au format STL [ici](stl/tetrahedron.stl).
+OpenSCAD permet aussi d'exporter les fichiers 3D au format STL (F6 puis F7). Vous pourrez retrouver notre tétraèdre au format STL [ici](stl/tetrahedron.stl), et le visualiser en 3D sur GitHub, ou même l'imprimer en 3D !  
+![](images/tetrahedron.gif)
+
+## Le Flocon en 3D
+
+### Passer d'un triangle à six triangles
+
+Rappelez-vous: pour avancer d'une étape la construction du flocon de Von Kock en deux dimensions, il fallait ajouter un triangle de côté égal au tiers du segment, à chaque segment.
+
+En trois dimensions nous allons tenter la même approche. A chaque triangle équilatéral, nous allons ajouter un nouveau tétraèdre!
+
+Faisons le pour une seule face: nous allons obtenir un total de six triangle équilatéraux.  
+![](images/flocon_3d_etape_1.png)
+
+La question, c'est... comment allons-nous programmer ça?
+
+Etudions le programme ci-dessous:
+```
+H = sqrt(3);
+
+module triangle() {
+polyhedron(
+    points=[[-1,0,0], [1,0,0], [0,H,0]],
+    faces=[[0,1,2]]);
+};
+
+translate([0,H/3,0])
+scale(1/2)
+for (angle = [0,120,240])
+{
+    rotate([0,0,angle])
+    translate([0,H/3,0])
+    {   
+        triangle();
+        rotate([109.5,0,0]) mirror([0,0,1]) triangle();
+    };
+};
+```
+
+- Avec le module `triangle`, on définit une fonction capable de tracer un triangle de côté égal à 2. C'est la base du tétraèdre précédent.
+- Pour tracer les 6 triangles, nous allons utiliser une boucle qui nous fait tourner dans l'espace, de 0, 120 ou 240°: ce sont les instructions `for (angle = [0,120,240])` et `rotate([0,0,angle])`
+- Nous voulons que chacun de ces 6 triangles soit 2x plus petit que le triangle d'origine, d'où l'instruction `scale(1/2)` qui réduit l'échelle d'un facteur 2.
+- Enfin, la figure doit avoir le même centre de gravité (dans le plan (x,y)), d'où l'instruction `translate([0,H/3,0])` qui nous positionne sur ce point avant de faire les rotations
+- Finalement, on trace deux triangles (x3) à une distance H/3 du centre de rotation, d'où la seconde instruction `translate([0,H/3,0])`. Le premier triangle est dans le plan d'origine, l'autre fait un angle de 109.5° par rapport à ce plan. On a trouvé cet angle par _dichotomie_: si on met une valeur plus petite, le tétraèdre central est ouvert, et s'il est plus grand, les triangles se recoupent... La valeur exacte est sans doute un peu différente - c'est peut-être l'angle [_Vertex-Center-Vertex_](https://en.wikipedia.org/wiki/Tetrahedron) égal à `2 arctan(√2)=109.4712...`.
+
+### Itérer les étapes en 3D
+
+Pour itérer les étapes du Flocon en 3D, on va remplacer l'appel à `triangle()` par un appel à `face_flocon(n-1)`. Le fichier correspondant est disponible à [`source/flocon_3d.scad`](source/flocon_3d.scad).
+
+Ouvrez-le fichier dans OpenSCAD, et changez la valeur dans `face_flocon(3)` à la dernière ligne, puis appuyez sur F5. 
+Faites attention à ne pas mettre de trop grandes valeurs... Rappelez-vous que pour `n=0` on a un triangle, mais qu'à chaque étape on en a six fois plus, autrement dit pour `n=5` on aura déjà 7776 triangles... au delà, la croissance exponentielle des triangles risque fort d'avoir raison de OpenSCAD, voire même de bloquer votre ordinateur.
+
+![](images/face_flocon3d.gif)
+
+Avez-vous comme nous trouvé le résultat un peu décevant? Ne trouvez-vous pas que la surface du Flocon en 3D converge vers une forme très simple? un simple tétraèdre irrégulier (d'une hauteur égale à la moitié de la hauteur du tétraèdre régulier). Pour vérifier qu'on ne s'était pas trompé on a encore utilisé [Wikipedia](https://fr.wikipedia.org/wiki/Flocon_de_Koch).
+
+Allons-voir par exemple la face du [Flocon 3D avec `n=4`](stl/face_flocon_4.stl):  
+![](images/face_flocon3d_4.gif)
+
+En fait, le Flocon 3D est beaucoup plus intéressant lorsqu'on le retourne!  
+![](images/face_flocon3d_4_interieur.gif)
+
+### Imprimer le Flocon
+
+Nous avons découvert l'impression 3D pendant le premier confinement... C'est très simple: l'imprimante fait fondre du plastique, et dépose le plastique fondu pour construire la forme demandée. Bon c'est un peu lent... et pas toujours facile!
+
+Par exemple, si nous ouvrons les fichiers STL créés plus haut avec [Ultimaker Cura](https://ultimaker.com/fr/software/ultimaker-cura), le logiciel qui détermine la trajectoire de la tête d'impression, on trouve une consommation de plastique de 0 grammes, et un temps zéro... autrement dit rien ne va s'imprimer!
+
+La raison pour cela, c'est que nos fichiers STL décrivent uniquement une _surface_, et non pas un _volume_. Si on veut vraiment imprimer le Flocon, il va falloir lui donner un peu d'épaisseur, et remplacer la forme de base, i.e. le `triangle()`, par un volume qui ressemblera au triangle et qui aura un peu de matière.
+
+Nous avons fait cela avec la fonction suivante:
+```
+module triangle_epais(h) {
+polyhedron(
+    points=[
+    [-1,0,h], [1,0,h], [0,H,h],
+    [-1,0,-h], [1,0,-h], [0,H,-h]],
+    // sommets dans l'ordre des aiguilles d'une montre vu de l'extérieur
+    faces=[[0,1,2], [1,0,3,4], [2,1,4,5], [0,2,5,3], [5,4,3]]);
+};
+```
+dans le fichier [`source/flocon_3d_imprimable.scad`](source/flocon_3d_imprimable.scad). Notez que, pour éviter que les triangles deviennent trop fins lorsqu'on applique la récursion, nous multiplions l'argument `h` par 2 à chaque étape, pour compenser le changement d'échelle. Le résultat est la forme suivante:  
+![](images/flocon_3d_imprimable.png)
+
+Vous pouvez générer vous-même les fichiers STL (F5, F6 puis F7 dans OpenSCAD, ça prend un certain temps même pour `n=4`) ou bien les récupérer dans le dossier [`stl_imprimables`](stl_imprimables).
+
+Pour imprimer, ouvrez le fichier dans Cura:  
+![](images/flocon_4_cura.png)
+
+Choisissez la mise à l'échelle qui vous convient... souvenez-vous que si vous imprimez 2x plus petit, le résultat sera 8x plus rapide... ou bien armez-vous de patience!
 
 
 
+
+- donner un peu de volume avant d'imprimer
+- impression (vidéo)
+- reconstruire le flocon entier (avec 4 faces) ==>... on obtient un cube!
+- d'autres applications = les poupées russes (vidéo)
+- et les chapeaux de princesses
