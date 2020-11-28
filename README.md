@@ -127,8 +127,32 @@ Bien sûr, il faut faire attention de ne pas appeler le même block indéfinimen
 
 ![](images/sous_segment.png)
 
-Nous sommes prêts! D'ailleurs, si vous voulez essayer avec nous, le programme est aussi disponible dans le dossier `scratch`  - c'est le fichier [`flocon.sb3`](scratch/flocon.sb3)
+Nous sommes prêts! D'ailleurs, si vous voulez essayer avec nous, le programme est aussi disponible dans le dossier `scratch`  - c'est le fichier [`flocon.sb3`](scratch/flocon.sb3).
 
 ![](images/scratch_flocon4.gif)
+
+# Et si on passait à la 3D?
+
+Le Flocon de Von Koch en 2D est super sympa... alors on a eu envie de passer à la 3D.
+
+On a commencé par contruire le tétrahèdre avec [OpenSCAD](https://www.openscad.org/). Un tétrahèdre c'est un polyèdre régulier fait de 4 faces égales, chacune de ces faces étant un triangle équilatéral.
+
+Dans OpenSCAD, on créé le tétrahèdre en donnant les coordonnées de tous ses points, puis en énumérant tout les faces. Le code entier s'écrit
+
+```
+H = sqrt(3);
+T = 2 * sqrt(6) / 3;
+
+polyhedron(
+    points=[[-1,0,0], [1,0,0], [0,H,0], [0,H/3,T]],
+    faces=[[0,1,2], [3,2,1], [3,1,0], [3,0,2]]
+    );
+```
+
+Remarquez que les deux premiers sommets sont sur l'axe `x`, aux coordonnées `-1` et `+1`. Le troisième sommet est à `y=√3`, c'est la hauteur d'un triangle équilatéral de côté `2`. Et le troisième sommet est à une hauteur `2√6/3` (car notre tétraèdre a des côtés de taille 2), et il est situé au-dessus du centre de gravité du triangle horizontal.
+
+On execute le code dans OpenSCAD avec F5 (preview), puis fait F6 (render) et après on peut l'exporter comme un fichier STL:
+
+![](stl/tetrahedron.stl)
 
 
