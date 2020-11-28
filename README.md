@@ -8,14 +8,16 @@ Bienvenue! Ceci est un article que nous écrivons à six mains: Marc, le Papa, m
 
 ## Le Flocon de Von Koch
 
-Pour dessiner le Flocon de Von Koch, on commence par dessiner un triangle équilatéral:  
-![](images/triangle.png)
+Le Flocon de Von Koch est un très bel exemple de fractale. On peut facilement dessiner à la main les premières étapes.
 
-Ensuite, on découpe chaque côté du triangle en trois sous-segments égaux. Et on colle un triangle équilatéral, trois fois plus petit que le premier, sur chaque segment central:  
-![](images/flocon1_avec_triangles.png)
+Pour dessiner le Flocon de Von Koch, on commence par dessiner un triangle équilatéral.  
+
+Ensuite, on découpe chaque côté du triangle en trois sous-segments égaux. Et on colle un triangle équilatéral, trois fois plus petit que le premier, sur chaque segment central.
 
 Effaçons maintenant le segment central. Autrement dit, on a remplacé le segment central par deux nouveaux segments, de même longueur, qui font un angle de 60° avec le segment initial:  
-![](images/flocon1.png)
+| Triangle | Ajoutons des petits triangles | Gommons le segment intérieur |
+| --- | --- | --- |
+| ![](images/triangle.png) | ![](images/flocon1_avec_triangles.png) |  ![](images/flocon1.png) |
 
 On peut recommencer l'opération! Nous avons maintenant 12 segments. Découpons-les chacun en 3, et remplaçons chacun des segments centraux par deux nouveaux segments. Cela nous fait donc 48 segments, n'est-ce pas?  
 ![](images/flocon2.gif)
@@ -304,3 +306,7 @@ Avec six faces petit modèle, on peut reproduire le grand modèle. C'est comme d
 
 Les flocons ont également inspiré notre très jeune modiste de 3 ans:  
 ![](images/chapeaux.jpg)
+
+Merci de nous avoir accompagné tout au long de cet article... à bientôt pour d'autres découvertes amusantes avec la famille Wouts!
+
+<span style="font-size:40em;"><i><b>FIN</i></b></span>
