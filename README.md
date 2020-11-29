@@ -292,11 +292,11 @@ Pour imprimer, ouvrez le fichier dans [Cura Ultimaker](https://ultimaker.com/fr/
 Choisissez la mise à l'échelle qui vous convient... souvenez-vous que si vous imprimez 2x plus petit, le résultat sera 8x plus rapide... ou bien armez-vous de patience! Notez que vous pouvez modifier l'épaisseur des triangles si vous le souhaitez, en ouvrant le fichier [`flocon_3d_imprimable.scad`](source/flocon_3d_imprimable.scad) dans OpenSCAD et en changeant le paramètre `h`.
 
 Voici quelques images de l'impression 3D:  
+![](images/impression.gif)
+
 | Après 10 minutes | Après 2 heures | Un jour plus tard | Deux jours plus tard |
 | --- | --- | --- | --- |
 | ![](images/impression1.jpg) | ![](images/impression2.jpg) | ![](images/impression3.jpg) | ![](images/impression4.jpg) |
-
-![](images/impression.gif)
 
 Nous avons préféré imprimer _sans support_, car extraire le support d'impression semblait quasiment impossible vu la nature fractale de notre flocon. L'inconvénient, c'est que l'impression n'est pas parfaite... les fils lancés au dessus du vide pendent parfois un peu.
 
