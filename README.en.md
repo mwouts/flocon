@@ -1,6 +1,6 @@
 [![License: CC BY-NC-SA 4.0](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg)](http://creativecommons.org/licenses/by-nc-sa/4.0/)
 
-# The Three-Dimensional Koch Flake - Fun Fractals at Home
+# The Three-Dimensional Koch Snowflake - Fun Fractals at Home
 
 Welcome! This is an article that we are writing with six hands: Marc, the Father, mathematician and a little handyman in his spare time, Sasha, 12, and Félix, 8. We started by exploring some mathematical concepts from Koch's Snowflake, everyone brought a lot of enthusiasm to it and we ended up going much further than expected ... to Scratch programming, 3D printing, and ultimately writing this article. Suffice to say that we had a great time on this project ... and now we want to share it with you!
 
@@ -42,7 +42,7 @@ Let's not be afraid of anything ... here are snowflakes with 768 or even 3072 or
 
 ## A bit of Arithmetic
 
-The Koch Flake is well known for its mathematical properties. At each stage, its perimeter and area increase ... but not in the same proportions!
+The Koch snowflake is well known for its mathematical properties. At each stage, its perimeter and area increase ... but not in the same proportions!
 
 Let's imagine that the initial triangle has sides of length 7.29cm (we will be able to divide 7.29 many times by 3, hence this choice!) At each step, the number of sides of the snowflake is multiplied by 4, and each side becomes 3x shorter.
 
@@ -110,7 +110,7 @@ Snowflake of degree 120: 5300541194335152988749892502228755547482451690626856874
 
 Mathematicians say that the area _converge_, and they even know how to calculate the value of the limit, equal to `2a²√3/5=36.819312529008464...`, cf. the article on [Koch's Snowflake](https://en.wikipedia.org/wiki/Koch_snowflake) at Wikipedia.
 
-The Koch flake is therefore an example of a shape with a finite area, and an infinite perimeter!
+The Koch snowflake is therefore an example of a shape with a finite area, and an infinite perimeter!
 
 ## Program the Snowflake in Scratch
 
@@ -158,7 +158,7 @@ We are ready! By the way, if you want to try it with us, the program is also ava
 
 # How about moving to 3D?
 
-The 2D Koch Flake is super cool ... are you curious to see what it looks like in 3D?
+The 2D Koch snowflake is super cool ... are you curious to see what it looks like in 3D?
 
 ## The Tetrahedron
 
