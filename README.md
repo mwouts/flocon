@@ -141,9 +141,9 @@ Le Flocon de Von Koch en 2D est super sympa... êtes-vous curieux de voir ce que
 
 ## Le tétraèdre
 
-En trois dimensions, l'équivalent du triangle est le tétraèdre. C'est le polyèdre régulier dont les 4 faces sont des triangle équilatéraux.
+En trois dimensions, l'équivalent du triangle est le tétraèdre. C'est le polyèdre régulier dont les 4 faces sont des triangles équilatéraux.
 
-On a commencé par contruire le tétraèdre avec [OpenSCAD](https://www.openscad.org/).
+On a commencé par construire le tétraèdre avec [OpenSCAD](https://www.openscad.org/).
 
 Dans OpenSCAD, on créé le tétraèdre en donnant les coordonnées de tous les points, puis en énumérant tout les faces. Le code s'écrit
 
@@ -180,7 +180,7 @@ OpenSCAD permet aussi d'exporter les fichiers 3D au format STL (F6 puis F7). Vou
 
 ## Le Flocon en 3D - étape 1
 
-Rappelez-vous: pour avancer d'une étape la construction du flocon de Von Kock en deux dimensions, il fallait ajouter un triangle de côté égal au tiers du segment, à chaque segment.
+Rappelez-vous: pour avancer d'une étape la construction du flocon de Von Koch en deux dimensions, il fallait ajouter un triangle de côté égal au tiers du segment, à chaque segment.
 
 En trois dimensions nous allons tenter la même approche. A chaque triangle équilatéral, nous allons ajouter un nouveau tétraèdre!
 
@@ -313,4 +313,4 @@ Les flocons ont également inspiré notre très jeune modiste de 3 ans:
 
 Merci de nous avoir accompagné tout au long de cet article... à bientôt pour d'autres découvertes amusantes avec la famille Wouts!
 
-<span style="font-size:40em;"><i><b>FIN</i></b></span>
+***FIN***
