@@ -1,10 +1,10 @@
 [![License: CC BY-NC-SA 4.0](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg)](http://creativecommons.org/licenses/by-nc-sa/4.0/)
 
-# Le Flocon de Von Koch, de la 2D à la 3D
-
+# Le Flocon de Koch en Trois Dimensions - Des Fractales Amusantes à la Maison
+ 
 ## Introduction
 
-Bienvenue! Ceci est un article que nous écrivons à six mains: Marc, le Papa, mathématicien et un peu bricoleur à ses heures, Sasha, 12 ans, et Félix, 8 ans. Nous avons commencé par explorer quelques concepts mathématiques à partir du Flocon de Von Koch, chacun y a apporté beaucoup d'enthousiasme et nous sommes finalement allés beaucoup plus loin que prévu... jusqu'à la programmation en Scratch, l'impression 3D, et finalement l'écriture de cet article. Autant dire que nous avons passé de supers moments sur ce projet... et nous souhaitons maintenant vous en faire profiter!
+Bienvenue! Ceci est un article que nous écrivons à six mains: Marc, le Papa, mathématicien et un peu bricoleur à ses heures, Sasha, 12 ans, et Félix, 8 ans. Nous avons commencé par explorer quelques concepts mathématiques à partir du Flocon de Koch, chacun y a apporté beaucoup d'enthousiasme et nous sommes finalement allés beaucoup plus loin que prévu... jusqu'à la programmation en Scratch, l'impression 3D, et finalement l'écriture de cet article. Autant dire que nous avons passé de supers moments sur ce projet... et nous souhaitons maintenant vous en faire profiter!
 
 **Sommaire**
 - [Le Flocon de Von Koch, de la 2D à la 3D](#le-flocon-de-von-koch-de-la-2d--la-3d)
@@ -20,15 +20,13 @@ Bienvenue! Ceci est un article que nous écrivons à six mains: Marc, le Papa, m
   - [Que faire avec ces Flocons?](#que-faire-avec-ces-flocons)
 
 
-## Le Flocon de Von Koch
+## Le Flocon de Koch
 
-Le Flocon de Von Koch est un très bel exemple de fractale. On peut facilement dessiner à la main les premières étapes.
+Le [Flocon de Koch](https://fr.wikipedia.org/wiki/Flocon_de_Koch) est une forme très connue chez les mathématiciens! Il est facile à dessiner, il a des propriétés mathématiques très amusantes: son périmètre est infini, alors que son aire reste finie, et surtout c'est un bel exemple de [fractale](https://fr.wikipedia.org/wiki/Fractale): les parties du flocon ressemblent au flocon lui-même... en plus petit!
 
-Pour dessiner le Flocon de Von Koch, on commence par dessiner un triangle équilatéral.  
+Commençons par dessiner le flocon. On part d'un triangle équilatéral. Ensuite, on découpe chaque côté du triangle en trois sous-segments égaux. Et on colle un triangle équilatéral, trois fois plus petit que le premier, sur chacun des segments centraux.
 
-Ensuite, on découpe chaque côté du triangle en trois sous-segments égaux. Et on colle un triangle équilatéral, trois fois plus petit que le premier, sur chaque segment central.
-
-Effaçons maintenant le segment central. Autrement dit, on a remplacé le segment central par deux nouveaux segments, de même longueur, qui font un angle de 60° avec le segment initial:  
+Effaçons maintenant les segments centraux. Autrement dit, on a remplacé chaque segment central par deux nouveaux segments, de même longueur, qui font un angle de 60° avec le segment initial:  
 | Triangle | Ajoutons des petits triangles | Gommons le segment intérieur |
 | --- | --- | --- |
 | ![](images/triangle.png) | ![](images/flocon1_avec_triangles.png) |  ![](images/flocon1.png) |
@@ -46,7 +44,7 @@ N'ayons peur de rien... voici des flocons avec 768 ou même 3072 ou 12288 côté
 
 ## Un peu d'Arithmétique
 
-Le Flocon de Von Koch est très connu pour ses propriétés mathématiques. A chaque étape, son périmètre et son aire augmentent... mais pas dans les mêmes proportions!
+Le Flocon de Koch est très connu pour ses propriétés mathématiques. A chaque étape, son périmètre et son aire augmentent... mais pas dans les mêmes proportions!
 
 Imaginons que le triangle initial ait des côtés de longueur 7.29cm (nous pourrons diviser 7.29 de nombreuses fois par 3, d'où ce choix!) A chaque étape, le nombre de côtés du flocon est multiplié par 4, et chacun des côtés devient 3x plus court.
 
@@ -59,11 +57,18 @@ Imaginons que le triangle initial ait des côtés de longueur 7.29cm (nous pourr
 
 Chaque fois qu'on augmente le flocon d'un degré, le périmètre est multiplié par 4/3. Ce qui signifie que l'on peut le multiplier ainsi à l'infini...ce qui, évidemment, prends aussi un temps infini!
 
-Bref, le flocon a un périmètre infini. Et quelle est son aire?
+Le périmètre va dépasser (et rester au delà) de n'importe quelle valeur. Par exemple:
+- Il dépasse le mètre à l'étape 6
+- le kilomètre à l'étape 30
+- et même l'année lumière à l'étape 134!
 
-On peut calculer l'aire du Flocon à chaque étape. A chaque opération, on ajoute des triangles qui sont ont un côté trois fois plus petit que les triangles du niveau précédent, et qui ont donc une aire 9 fois plus petite. Et le nombre de ces nouveaux triangles est égal au nombre de segments du Flocon, qui est multiplé par 4 à chaque étape.
+Les mathématiciens disent dans ce cas que le périmètre _tend vers l'infini_.
 
-Comme le calcul est un peu laborieux, nous avons écrit un petit programme pour faire ce calcul:
+Et l'aire du Flocon? 
+
+Et bien, on peut la calculer. A chaque opération, on ajoute des triangles qui sont ont un côté trois fois plus petit que les triangles du niveau précédent, et qui ont donc une aire 9 fois plus petite. Et le nombre de ces nouveaux triangles est égal au nombre de segments du Flocon, qui est multiplé par 4 à chaque étape.
+
+Comme le calcul est un peu laborieux, nous avons écrit un petit programme:
 ```python
 import math
 
@@ -98,14 +103,16 @@ Flocon de degré 5: 3072 côtés, 36.57987382537014 cm2
 Flocon de degré 6: 12288 côtés, 36.712895327391436 cm2
 ```
 
-On peut faire tourner le programme plus longtemps, et on voit que l'aire augmente de moins en moins vite! Et même, au bout d'un moment le programme donne toujours le même chiffre. L'aire continue à augmenter, mais on ne le voit plus sur le calcul car le programme n'affiche pas assez de décimales...
+On peut faire tourner le programme plus longtemps, et on voit que l'aire augmente de moins en moins vite! Et même, au bout d'un moment le programme donne toujours le même chiffre: `36.81931252900848 cm2`. L'aire continue à augmenter, mais on ne le voit plus car le programme n'affiche pas assez de décimales...
 ```
 Flocon de degré 118: 331283824645947061796868281389297221717653230664178554647801162742366208 côtés, 36.81931252900848 cm2
 Flocon de degré 119: 1325135298583788247187473125557188886870612922656714218591204650969464832 côtés, 36.81931252900848 cm2
 Flocon de degré 120: 5300541194335152988749892502228755547482451690626856874364818603877859328 côtés, 36.81931252900848 cm2
 ```
 
-L'aire augmente à chaque étape, mais elle fini par converger. Le flocon de Von Koch est donc un exemple de forme avec une aire finie, et un périmètre infini!
+Les mathématiciens disent que l'aire _converge_, et il savent même calculer la valeur de la limite, égale à `2 a² √3/5= 36.819312529008464...`, cf. l'article en anglais sur le [Flocon de Koch](https://en.wikipedia.org/wiki/Koch_snowflake) sur Wikipedia.
+
+Le flocon de Koch est donc un exemple de forme avec une aire finie, et un périmètre infini!
 
 ## Dessiner le Flocon avec Scratch
 
@@ -114,13 +121,13 @@ C'est Félix qui nous a fait découvrir Scratch! Scratch est un super projet du 
 ### Commençons par un Triangle
 
 Avant de dessiner le Flocon, on va utiliser Scratch pour dessiner un triangle équilatéral. 
-Le programme est assez simple: on demande au personnage d'avancer de 250 unités, puis de changer de direction, et cela à trois reprises:
+Le programme est assez simple: on fait avancer puis tourner le personnage, et cela à trois reprises:
 
 ![](images/scratch_triangle.gif)
 
-Vous avez remarqué, n'est-ce pas, qu'on demande au personnage de changer de direction suivant un angle de 120°... avouons qu'on a commencé par essayer 60°, mais alors on obtient un hexagone et pas un triangle... cela parce que l'angle correspond au changement de direction, et non pas à l'angle fait par les deux segments...
+Vous avez remarqué, n'est-ce pas, qu'on fait tourner le personnage d'un angle de 120°, et non pas 60°... avouons qu'on a commencé par essayer 60°, mais alors on obtenait un hexagone et pas un triangle. Cela parce que l'angle doit être le changement de direction, et non pas l'angle fait par les deux segments!
 
-Si vous voulez essayer vous même le programme qui dessine le triangle, il est disponible dans le dossier `scratch` de ce projet.
+Si vous voulez essayer vous même le programme qui dessine le triangle, il est disponible dans le dossier [`scratch`](scratch) de ce projet - c'est [`triangle.sb3`](scratch/triangle.sb3).
 
 ### A nous le Flocon!
 
@@ -129,19 +136,19 @@ Pour programmer le flocon, voyons quelle trajectoire le personnage de Scratch va
 ![](images/segment.png)
 
 Faisons l'exercice de décrire cette trajectoire:
-- traçons un segment de longueur 3 fois plus petite que le segment initial
-- puis, tournons de 60° dans le sens inverse des aiguilles d'une montre pour commencer à dessiner le triangle qu'on va ajouter
-- traçons un segment
-- tournons de 120° dans le sens des aiguilles pour dessiner la pointe du nouveau triangle
-- traçons un segment
-- tournons à nouveau de 60° dans le sens inverse
-- et traçons le dernier segment.
+- on trace un segment de longueur 3 fois plus petite que le segment initial
+- puis, on tourne de 60° dans le sens inverse des aiguilles d'une montre
+- on trace un autre segment
+- on tourne de 120° dans le sens des aiguilles d'une montre
+- avant de dessiner le troisième segment
+- enfin, on tourne de 60° dans le sens inverse
+- et on trace le dernier segment.
 
-Pour le triangle, nous avions déjà utilisé un _block_ dans scratch. Ici, on remplace l'instruction "avancer de 250 pas" qu'on avait pour le triangle par "faire un segment de longueur 250 pas dans la direction actuelle". Et ce block "faire un segment" va lui-même faire les 4 segments que nous avons décrit plus haut... Autrement dit il va appeler 4 fois le même block!
+Pour le triangle, nous avions déjà utilisé un _bloc_ dans scratch. Ici, on remplace l'instruction "avancer de 250 pas" qu'on avait pour le triangle par "faire un segment de longueur 250 pas dans la direction actuelle". Et ce bloc "faire un segment" va lui-même faire les 4 segments que nous avons décrit plus haut... Autrement dit il va appeler 4 fois le même bloc!
 
-![](images/block_segment.png)
+![](images/bloc_segment.png)
 
-Bien sûr, il faut faire attention de ne pas appeler le même block indéfiniment, sinon le programme ne terminerait jamais! Donc, dans notre programme, on demande au sous segment d'être
+Bien sûr, il faut faire attention à ne pas appeler le même bloc indéfiniment, sinon le programme ne se terminerait jamais! Donc, dans notre programme, on demande au sous segment d'être
 - trois fois plus court
 - et de faire une étape de moins
 
@@ -153,7 +160,7 @@ Nous sommes prêts! D'ailleurs, si vous voulez essayer avec nous, le programme e
 
 # Et si on passait à la 3D?
 
-Le Flocon de Von Koch en 2D est super sympa... êtes-vous curieux de voir ce que ça donne en 3D?
+Le Flocon de Koch en 2D est super sympa... êtes-vous curieux de voir ce que ça donne en 3D?
 
 ## Le Tétraèdre
 
@@ -196,7 +203,7 @@ OpenSCAD permet aussi d'exporter les fichiers 3D au format STL (F6 puis F7). Vou
 
 ## Le Flocon en 3D - Etape 1
 
-Rappelez-vous: pour avancer d'une étape la construction du flocon de Von Koch en deux dimensions, il fallait ajouter un triangle de côté égal au tiers du segment, à chaque segment.
+Rappelez-vous: pour avancer d'une étape la construction du flocon de Koch en deux dimensions, il fallait ajouter un triangle de côté égal au tiers du segment, à chaque segment.
 
 En trois dimensions nous allons tenter la même approche. A chaque triangle équilatéral, nous allons ajouter un nouveau tétraèdre!
 
@@ -229,39 +236,39 @@ for (angle = [0,120,240])
 ```
 
 - Avec le module `triangle`, on définit une fonction capable de tracer un triangle de côté égal à 2. C'est la base du tétraèdre précédent.
-- Pour tracer les 6 triangles, nous allons utiliser une boucle qui nous fait tourner dans l'espace, de 0, 120 ou 240°: ce sont les instructions `for (angle = [0,120,240])` et `rotate([0,0,angle])`
+- Pour tracer les 6 triangles, nous utilisons une boucle qui nous fait tourner dans l'espace, de 0, 120 ou 240°: ce sont les instructions `for (angle = [0,120,240])` et `rotate([0,0,angle])`
 - Nous voulons que chacun de ces 6 triangles soit 2x plus petit que le triangle d'origine, d'où l'instruction `scale(1/2)` qui réduit l'échelle d'un facteur 2.
-- Enfin, la figure doit avoir le même centre de gravité (dans le plan (x,y)), d'où l'instruction `translate([0,H/3,0])` qui nous positionne sur ce point avant de faire les rotations
-- Finalement, on trace deux triangles (x3) à une distance H/3 du centre de rotation, d'où la seconde instruction `translate([0,H/3,0])`. Le premier triangle est dans le plan d'origine, l'autre fait un angle de 109.5° par rapport à ce plan. On a trouvé cet angle par _dichotomie_: si on met une valeur plus petite, le tétraèdre central est ouvert, et s'il est plus grand, les triangles se recoupent... La valeur exacte est sans doute un peu différente - c'est peut-être l'angle [_Vertex-Center-Vertex_](https://en.wikipedia.org/wiki/Tetrahedron) égal à `2 arctan(√2)=109.4712...`.
+- Enfin, la figure doit avoir le même centre de gravité (dans le plan `(x,y)`), d'où l'instruction `translate([0,H/3,0])` qui nous positionne sur ce point avant de faire les rotations
+- Finalement, on trace deux triangles (et cela, à trois reprises, grace à la boucle `for`) à une distance `H/3` du centre de rotation, d'où la seconde instruction `translate([0,H/3,0])`. Le premier triangle est dans le plan d'origine. L'autre fait un angle de 109.5° par rapport à ce plan. On a trouvé cet angle par _dichotomie_: si on met une valeur plus petite, le tétraèdre central est ouvert, et s'il est plus grand, les triangles se recoupent... La valeur exacte est sans doute un peu différente - c'est peut-être l'angle [_Vertex-Center-Vertex_](https://en.wikipedia.org/wiki/Tetrahedron) égal à `2 arctan(√2)=109.4712...` d'après Wikipedia.
 
 ## Le Flocon en 3D - Récurrence
 
-Pour itérer les étapes du Flocon en 3D, on va remplacer l'appel à `triangle()` par un appel à `face_flocon(n-1)`. Le fichier correspondant est disponible à [`source/flocon_3d.scad`](source/flocon_3d.scad).
+Pour itérer les étapes du Flocon en 3D, on va remplacer l'appel à `triangle()` par un appel à `face_flocon(n-1)`. Le fichier correspondant est disponible à [`flocon_3d.scad`](source/flocon_3d.scad) dans le dossier [`source`](source).
 
 Ouvrez-le fichier dans OpenSCAD, et changez la valeur dans `face_flocon(3)` à la dernière ligne, puis appuyez sur F5. 
-Faites attention à ne pas mettre de trop grandes valeurs... Rappelez-vous que pour `n=0` on a un triangle, mais qu'à chaque étape on en a six fois plus, autrement dit pour `n=5` on aura déjà 7776 triangles... au delà, la croissance exponentielle des triangles risque fort d'avoir raison de OpenSCAD, voire même de bloquer votre ordinateur.
+Faites attention à ne pas mettre de trop grandes valeurs... Rappelez-vous que pour `n=0` on a un seul triangle, mais qu'à chaque étape on en créé six fois plus, autrement dit pour `n=5` on aura déjà 7776 triangles... au delà, la croissance exponentielle des triangles risque fort d'avoir raison de OpenSCAD, voire même de bloquer votre ordinateur.
 
 ![](images/face_flocon3d.gif)
 
-Avez-vous comme nous trouvé le résultat un peu décevant? Ne trouvez-vous pas que la surface du Flocon en 3D converge vers une forme très simple? un simple tétraèdre irrégulier (d'une hauteur égale à la moitié de la hauteur du tétraèdre régulier). Pour vérifier qu'on ne s'était pas trompé on a encore utilisé [Wikipedia](https://fr.wikipedia.org/wiki/Flocon_de_Koch).
+Avez-vous comme nous trouvé le résultat un peu décevant? La surface du Flocon en 3D converge vers une forme très simple... un tétraèdre irrégulier (d'une hauteur égale à la moitié de la hauteur du tétraèdre régulier). Pour vérifier qu'on ne s'était pas trompé on a encore utilisé [Wikipedia](https://fr.wikipedia.org/wiki/Flocon_de_Koch).
 
-Allons voir par exemple la face du [Flocon 3D avec `n=4`](stl/face_flocon_4.stl):  
+Regardons par exemple la face du Flocon 3D avec `n=4`:
 [![](images/face_flocon3d_4.gif)](stl/face_flocon_4.stl)
 
 Un peu trop régulier pour une fractale, n'est-ce pas?
 
-En fait, on voit le côté fractal du flocon en 3D seulement lorsqu'on le retourne! N'hésitez pas à cliquer sur l'image pour interagir vous-même avec le fichier 3D.  
+En fait, le côté fractal du flocon 3D apparaît seulement lorsqu'on le retourne! N'hésitez pas à cliquer sur l'image pour interagir vous-même avec le fichier 3D.  
 [![](images/face_flocon3d_4_interieur.gif)](stl/face_flocon_4.stl)
 
 ## Imprimer le Flocon
 
-Nous avons découvert l'impression 3D pendant le premier confinement... C'est très simple: l'imprimante construire progressivement la forme demandée en faisant fondre un fil de plastique. C'est génial... mais bon, c'est un peu lent... et pas toujours facile à régler!
+Nous avons découvert l'impression 3D pendant le premier confinement... C'est très simple: l'imprimante construit progressivement la forme demandée en faisant fondre un fil de plastique. C'est génial... mais bon, c'est un peu lent... et pas toujours facile à régler!
 
-Dans le cas du Flocon 3D, le premier problème que nous avons rencontré, c'est que notre Flocon faisait 0 grammes... l'imprimante n'imprimait rien du tout!
+Dans le cas du Flocon 3D, le premier problème que nous avons rencontré, c'est que notre Flocon faisait 0 grammes... autrement dit, l'imprimante n'imprimait rien du tout!
 
 Vous allez rencontrer le même problème si vous tentez d'imprimer les fichier STL que nous avons générés jusqu'à présent. En effet, nos fichiers STL décrivent uniquement une _surface_, et non pas un _volume_. 
 
-Si on veut vraiment imprimer le Flocon, il va falloir lui donner un peu d'épaisseur, et remplacer la forme de base, i.e. le `triangle()`, par un volume qui _ressemblera_ au triangle et qui aura un peu de matière.
+Si on veut vraiment imprimer le Flocon, il va falloir lui donner un peu d'épaisseur, et remplacer la forme de base, i.e. le `triangle()`, par un volume qui _ressemblera_ au triangle mais qui aura un peu de matière.
 
 Nous avons fait cela avec la fonction suivante:
 ```
@@ -277,7 +284,7 @@ polyhedron(
 dans le fichier [`flocon_3d_imprimable.scad`](source/flocon_3d_imprimable.scad). Notez que, pour éviter que les triangles deviennent trop fins lorsqu'on applique la récursion, nous multiplions l'argument `h` par 2 à chaque étape, pour compenser le changement d'échelle. Le résultat est la forme suivante:  
 ![](images/flocon_3d_imprimable.png)
 
-Vous pouvez générer vous-même les fichiers STL (F5, F6 puis F7 dans OpenSCAD, ça prend un certain temps même pour `n=4`) ou bien les récupérer dans le dossier [`stl_imprimables`](stl_imprimables).
+Vous pouvez générer vous-même les fichiers STL (F5, F6 puis F7 dans OpenSCAD, ça prend un certain temps déjà pour `n=4`) ou bien les récupérer dans le dossier [`stl_imprimables`](stl_imprimables).
 
 Pour imprimer, ouvrez le fichier dans [Cura Ultimaker](https://ultimaker.com/fr/software/ultimaker-cura):  
 ![](images/flocon_4_cura.png)
@@ -291,9 +298,9 @@ Voici quelques images de l'impression 3D:
 
 ![](images/impression.gif)
 
-Nous avons préféré imprimer _sans support_, car extraire le support d'impression semblait quasiment impossible vu la structure fractale de notre flocon. L'inconvénient, c'est que l'impression n'est pas parfaite... les fils lancés au dessus du vide pendent parfois un peu.
+Nous avons préféré imprimer _sans support_, car extraire le support d'impression semblait quasiment impossible vu la nature fractale de notre flocon. L'inconvénient, c'est que l'impression n'est pas parfaite... les fils lancés au dessus du vide pendent parfois un peu.
 
-Nous avons imprimé plusieurs modèles, en modulant la taille de façon à ce que les petits triangles aient tous la même taille:  
+Nous avons imprimé plusieurs modèles, en modulant la taille de façon à ce que le triangle de base ait toujours la même taille:  
 ![](images/famille_de_flocons.jpg)
 
 ## Que faire avec ces Flocons?
@@ -302,7 +309,7 @@ Nous avons trouvé beaucoup de jeux à faire avec ces pièces!
 
 ### Finissons le Flocon!
 
-Nous n'avons imprimé que les faces du flocon. Souvenez-vous que la forme de départ est un tétraèdre, non un triangle... Prenons donc quatre faces, et assemblons-les. Surprise!! On obtient un CUBE!
+Nous n'avons imprimé que les _faces_ du flocon. Souvenez-vous que la forme de départ est un tétraèdre, non un triangle... Prenons donc quatre faces, et assemblons-les. Surprise!! On obtient un CUBE!
 
 ![](images/flocon_3d_complet.jpg)
 
