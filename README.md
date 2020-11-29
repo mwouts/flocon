@@ -6,6 +6,20 @@
 
 Bienvenue! Ceci est un article que nous écrivons à six mains: Marc, le Papa, mathématicien et un peu bricoleur à ses heures, Sasha, 12 ans, et Félix, 8 ans. Nous avons commencé par explorer quelques concepts mathématiques à partir du Flocon de Von Koch, chacun y a apporté beaucoup d'enthousiasme et nous sommes finalement allés beaucoup plus loin que prévu... jusqu'à la programmation en Scratch, l'impression 3D, et finalement l'écriture de cet article. Autant dire que nous avons passé de supers moments sur ce projet... et nous souhaitons maintenant vous en faire profiter!
 
+**Sommaire**
+- [Le Flocon de Von Koch, de la 2D à la 3D](#le-flocon-de-von-koch-de-la-2d--la-3d)
+  - [Introduction](#introduction)
+  - [Le Flocon de Von Koch](#le-flocon-de-von-koch)
+  - [Un peu d'arithmétique](#un-peu-darithmtique)
+  - [Dessiner le Flocon avec Scratch](#dessiner-le-flocon-avec-scratch)
+- [Et si on passait à la 3D?](#et-si-on-passait--la-3d)
+  - [Le tétraèdre](#le-ttradre)
+  - [Le Flocon en 3D - étape 1](#le-flocon-en-3d---tape-1)
+  - [Le Flocon en 3D - récurrence](#le-flocon-en-3d---rcurrence)
+  - [Imprimer le Flocon](#imprimer-le-flocon)
+  - [Que faire avec ces flocons?](#que-faire-avec-ces-flocons)
+
+
 ## Le Flocon de Von Koch
 
 Le Flocon de Von Koch est un très bel exemple de fractale. On peut facilement dessiner à la main les premières étapes.
@@ -91,7 +105,7 @@ Flocon de degré 120: 5300541194335152988749892502228755547482451690626856874364
 
 L'aire augmente à chaque étape, mais elle fini par converger. Le flocon de Von Koch est donc un exemple de forme avec une aire finie, et un périmètre infini!
 
-## Dessiner le Flocon de Von Koch avec Scratch
+## Dessiner le Flocon avec Scratch
 
 C'est Félix qui nous a fait découvrir Scratch! Scratch est un super projet du Massachusetts Institute of Technology (MIT). C'est un language de programmation très accessible pour les enfants. Les instructions sont très visuelles. Vous pouvez essayer Scratch directement sur le [site du MIT](https://scratch.mit.edu/projects/editor/), sans rien installer!
 
