@@ -304,9 +304,10 @@ Nous avons trouvé beaucoup de jeux à faire avec ces pièces!
 
 Nous n'avons imprimé que les faces du flocon. Souvenez-vous que la forme de départ est un tétraèdre, non un triangle... Prenons donc quatre faces, et assemblons-les. Surprise!! On obtient un CUBE!
 
+![](images/flocon_3d_complet.jpg)
+
 ![](images/flocon_3d_complet.gif)
 
-![](images/flocon_3d_complet.jpg)
 
 ### Les Poupées Russes
 
@@ -315,7 +316,7 @@ Les petits flocons se cachent dans les grands:
 
 ### La Récurrence Recommencée
 
-Avec six faces petit modèle, on peut reproduire le grand modèle. C'est comme dans notre programme!  
+Avec six faces petit modèle, on peut reproduire le grand modèle. C'est comme dans notre programme OpenSCAD!  
 ![](images/flocon_3d_recurrence.gif)
 
 ### La Pyramide
