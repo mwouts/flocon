@@ -40,7 +40,9 @@ On peut recommencer l'opération! Nous avons maintenant 12 segments. Découpons-
 | ![](images/flocon2.gif) | ![](images/flocon3.gif) |
 
 N'ayons peur de rien... voici des flocons avec 768 ou même 3072 ou 12288 côtés... mais ça devient un peu long à dessiner...
-![](images/flocon4.png) ![](images/flocon5.png) ![](images/flocon6.png)
+| 768 | 3072 | 12288 |
+| --- | --- | --- |
+| ![](images/flocon4.png) | ![](images/flocon5.png) | ![](images/flocon6.png) |
 
 ## Un peu d'Arithmétique
 
