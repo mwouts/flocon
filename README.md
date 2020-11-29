@@ -1,15 +1,12 @@
 [![License: CC BY-NC-SA 4.0](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg)](http://creativecommons.org/licenses/by-nc-sa/4.0/)
 
 # Le Flocon de Koch en Trois Dimensions - Des Fractales Amusantes à la Maison
- 
-## Introduction
 
 Bienvenue! Ceci est un article que nous écrivons à six mains: Marc, le Papa, mathématicien et un peu bricoleur à ses heures, Sasha, 12 ans, et Félix, 8 ans. Nous avons commencé par explorer quelques concepts mathématiques à partir du Flocon de Koch, chacun y a apporté beaucoup d'enthousiasme et nous sommes finalement allés beaucoup plus loin que prévu... jusqu'à la programmation en Scratch, l'impression 3D, et finalement l'écriture de cet article. Autant dire que nous avons passé de supers moments sur ce projet... et nous souhaitons maintenant vous en faire profiter!
 
 **Sommaire**
-- [Le Flocon de Von Koch, de la 2D à la 3D](#le-flocon-de-von-koch-de-la-2d--la-3d)
-  - [Introduction](#introduction)
-  - [Le Flocon de Von Koch](#le-flocon-de-von-koch)
+- [Le Flocon de Koch](#le-flocon-de-koch)
+  - [Dessiner le Flocon](#dessiner-le-flocon)
   - [Un peu d'Arithmétique](#un-peu-darithmtique)
   - [Dessiner le Flocon avec Scratch](#dessiner-le-flocon-avec-scratch)
 - [Et si on passait à la 3D?](#et-si-on-passait--la-3d)
@@ -18,9 +15,10 @@ Bienvenue! Ceci est un article que nous écrivons à six mains: Marc, le Papa, m
   - [Le Flocon en 3D - Récurrence](#le-flocon-en-3d---rcurrence)
   - [Imprimer le Flocon](#imprimer-le-flocon)
   - [Que faire avec ces Flocons?](#que-faire-avec-ces-flocons)
+  
+# Le Flocon de Koch
 
-
-## Le Flocon de Koch
+## Dessiner le Flocon
 
 Le [Flocon de Koch](https://fr.wikipedia.org/wiki/Flocon_de_Koch) est une forme très connue chez les mathématiciens! Il est facile à dessiner, il a des propriétés mathématiques très amusantes: son périmètre est infini, alors que son aire reste finie, et surtout c'est un bel exemple de [fractale](https://fr.wikipedia.org/wiki/Fractale): les parties du flocon ressemblent au flocon lui-même... en plus petit!
 
@@ -114,7 +112,7 @@ Les mathématiciens disent que l'aire _converge_, et il savent même calculer la
 
 Le flocon de Koch est donc un exemple de forme avec une aire finie, et un périmètre infini!
 
-## Dessiner le Flocon avec Scratch
+## Programmer le Flocon en Scratch
 
 C'est Félix qui nous a fait découvrir Scratch! Scratch est un super projet du Massachusetts Institute of Technology (MIT). C'est un language de programmation très accessible pour les enfants. Les instructions sont très visuelles. Vous pouvez essayer Scratch directement sur le [site du MIT](https://scratch.mit.edu/projects/editor/), sans rien installer!
 
