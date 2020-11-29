@@ -10,14 +10,14 @@ Bienvenue! Ceci est un article que nous écrivons à six mains: Marc, le Papa, m
 - [Le Flocon de Von Koch, de la 2D à la 3D](#le-flocon-de-von-koch-de-la-2d--la-3d)
   - [Introduction](#introduction)
   - [Le Flocon de Von Koch](#le-flocon-de-von-koch)
-  - [Un peu d'arithmétique](#un-peu-darithmtique)
+  - [Un peu d'Arithmétique](#un-peu-darithmtique)
   - [Dessiner le Flocon avec Scratch](#dessiner-le-flocon-avec-scratch)
 - [Et si on passait à la 3D?](#et-si-on-passait--la-3d)
-  - [Le tétraèdre](#le-ttradre)
-  - [Le Flocon en 3D - étape 1](#le-flocon-en-3d---tape-1)
-  - [Le Flocon en 3D - récurrence](#le-flocon-en-3d---rcurrence)
+  - [Le Tétraèdre](#le-ttradre)
+  - [Le Flocon en 3D - Etape 1](#le-flocon-en-3d---etape-1)
+  - [Le Flocon en 3D - Récurrence](#le-flocon-en-3d---rcurrence)
   - [Imprimer le Flocon](#imprimer-le-flocon)
-  - [Que faire avec ces flocons?](#que-faire-avec-ces-flocons)
+  - [Que faire avec ces Flocons?](#que-faire-avec-ces-flocons)
 
 
 ## Le Flocon de Von Koch
@@ -42,7 +42,7 @@ On peut recommencer l'opération! Nous avons maintenant 12 segments. Découpons-
 N'ayons peur de rien... voici des flocons avec 768 ou même 3072 ou 12288 côtés... mais ça devient un peu long à dessiner...
 ![](images/flocon4.png) ![](images/flocon5.png) ![](images/flocon6.png)
 
-## Un peu d'arithmétique
+## Un peu d'Arithmétique
 
 Le Flocon de Von Koch est très connu pour ses propriétés mathématiques. A chaque étape, son périmètre et son aire augmentent... mais pas dans les mêmes proportions!
 
@@ -109,7 +109,7 @@ L'aire augmente à chaque étape, mais elle fini par converger. Le flocon de Von
 
 C'est Félix qui nous a fait découvrir Scratch! Scratch est un super projet du Massachusetts Institute of Technology (MIT). C'est un language de programmation très accessible pour les enfants. Les instructions sont très visuelles. Vous pouvez essayer Scratch directement sur le [site du MIT](https://scratch.mit.edu/projects/editor/), sans rien installer!
 
-### Commençons par un triangle
+### Commençons par un Triangle
 
 Avant de dessiner le Flocon, on va utiliser Scratch pour dessiner un triangle équilatéral. 
 Le programme est assez simple: on demande au personnage d'avancer de 250 unités, puis de changer de direction, et cela à trois reprises:
@@ -120,7 +120,7 @@ Vous avez remarqué, n'est-ce pas, qu'on demande au personnage de changer de dir
 
 Si vous voulez essayer vous même le programme qui dessine le triangle, il est disponible dans le dossier `scratch` de ce projet.
 
-### A nous le flocon!
+### A nous le Flocon!
 
 Pour programmer le flocon, voyons quelle trajectoire le personnage de Scratch va devoir suivre. Chaque segment du triangle va être remplacé par une suite de 4 segments:
 
@@ -153,7 +153,7 @@ Nous sommes prêts! D'ailleurs, si vous voulez essayer avec nous, le programme e
 
 Le Flocon de Von Koch en 2D est super sympa... êtes-vous curieux de voir ce que ça donne en 3D?
 
-## Le tétraèdre
+## Le Tétraèdre
 
 En trois dimensions, l'équivalent du triangle est le tétraèdre. C'est le polyèdre régulier dont les 4 faces sont des triangles équilatéraux.
 
@@ -192,7 +192,7 @@ Dans OpenSCAD, on execute le code avec F5 (preview), et on obtient ceci:
 OpenSCAD permet aussi d'exporter les fichiers 3D au format STL (F6 puis F7). Vous pourrez retrouver notre tétraèdre au format STL [ici](stl/tetrahedron.stl), et le visualiser en 3D sur GitHub, ou même l'imprimer en 3D !  
 ![](images/tetrahedron.gif)
 
-## Le Flocon en 3D - étape 1
+## Le Flocon en 3D - Etape 1
 
 Rappelez-vous: pour avancer d'une étape la construction du flocon de Von Koch en deux dimensions, il fallait ajouter un triangle de côté égal au tiers du segment, à chaque segment.
 
@@ -232,7 +232,7 @@ for (angle = [0,120,240])
 - Enfin, la figure doit avoir le même centre de gravité (dans le plan (x,y)), d'où l'instruction `translate([0,H/3,0])` qui nous positionne sur ce point avant de faire les rotations
 - Finalement, on trace deux triangles (x3) à une distance H/3 du centre de rotation, d'où la seconde instruction `translate([0,H/3,0])`. Le premier triangle est dans le plan d'origine, l'autre fait un angle de 109.5° par rapport à ce plan. On a trouvé cet angle par _dichotomie_: si on met une valeur plus petite, le tétraèdre central est ouvert, et s'il est plus grand, les triangles se recoupent... La valeur exacte est sans doute un peu différente - c'est peut-être l'angle [_Vertex-Center-Vertex_](https://en.wikipedia.org/wiki/Tetrahedron) égal à `2 arctan(√2)=109.4712...`.
 
-## Le Flocon en 3D - récurrence
+## Le Flocon en 3D - Récurrence
 
 Pour itérer les étapes du Flocon en 3D, on va remplacer l'appel à `triangle()` par un appel à `face_flocon(n-1)`. Le fichier correspondant est disponible à [`source/flocon_3d.scad`](source/flocon_3d.scad).
 
@@ -294,11 +294,11 @@ Nous avons préféré imprimer _sans support_, car extraire le support d'impress
 Nous avons imprimé plusieurs modèles, en modulant la taille de façon à ce que les petits triangles aient tous la même taille:  
 ![](images/famille_de_flocons.jpg)
 
-## Que faire avec ces flocons?
+## Que faire avec ces Flocons?
 
 Nous avons trouvé beaucoup de jeux à faire avec ces pièces!
 
-### Finissons le flocon!
+### Finissons le Flocon!
 
 Nous n'avons imprimé que les faces du flocon. Souvenez-vous que la forme de départ est un tétraèdre, non un triangle... Prenons donc quatre faces, et assemblons-les. Surprise!! On obtient un CUBE!
 
@@ -306,12 +306,12 @@ Nous n'avons imprimé que les faces du flocon. Souvenez-vous que la forme de dé
 
 ![](images/flocon_3d_complet.jpg)
 
-### Les poupées russes
+### Les Poupées Russes
 
 Les petits flocons se cachent dans les grands:  
 ![](images/poupees_russes.gif)
 
-### La récurrence recommencée
+### La Récurrence Recommencée
 
 Avec six faces petit modèle, on peut reproduire le grand modèle. C'est comme dans notre programme!  
 ![](images/flocon_3d_recurrence.gif)
@@ -320,7 +320,7 @@ Avec six faces petit modèle, on peut reproduire le grand modèle. C'est comme d
 
 ![](images/flocon_3d_pyramide.jpg)
 
-### Les chapeaux
+### Les Chapeaux
 
 Les flocons ont également inspiré notre très jeune modiste de 3 ans:  
 ![](images/chapeaux.jpg)
