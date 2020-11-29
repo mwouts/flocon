@@ -347,4 +347,4 @@ The snowflakes also inspired our very young 3-year-old milliner:
 
 Thank you for accompanying us throughout this article ... see you soon for other fun discoveries with the Wouts family!
 
-***END***
+***THE END***
