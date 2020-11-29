@@ -192,7 +192,7 @@ Dans OpenSCAD, on execute le code avec F5 (preview), et on obtient ceci:
 ![](images/tetrahedron.png)
 
 OpenSCAD permet aussi d'exporter les fichiers 3D au format STL (F6 puis F7). Vous pourrez retrouver notre tétraèdre au format STL [ici](stl/tetrahedron.stl), et le visualiser en 3D sur GitHub, ou même l'imprimer en 3D !  
-![](images/tetrahedron.gif)
+[![](images/tetrahedron.gif)](stl/tetrahedron.stl)
 
 ## Le Flocon en 3D - Etape 1
 
@@ -250,7 +250,7 @@ Allons voir par exemple la face du [Flocon 3D avec `n=4`](stl/face_flocon_4.stl)
 
 Un peu trop régulier pour une fractale, n'est-ce pas?
 
-En fait, on voit le côté fractal du flocon en 3D seulement lorsqu'on le retourne!  
+En fait, on voit le côté fractal du flocon en 3D seulement lorsqu'on le retourne! N'hésitez pas à cliquer sur l'image pour interagir vous-même avec le fichier 3D.  
 [![](images/face_flocon3d_4_interieur.gif)](stl/face_flocon_4.stl)
 
 ## Imprimer le Flocon
@@ -307,7 +307,6 @@ Nous n'avons imprimé que les faces du flocon. Souvenez-vous que la forme de dé
 ![](images/flocon_3d_complet.jpg)
 
 ![](images/flocon_3d_complet.gif)
-
 
 ### Les Poupées Russes
 
