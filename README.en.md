@@ -2,7 +2,7 @@
 
 # The Three-Dimensional Koch Snowflake - Fun Fractals at Home
 
-Welcome! This is an article that we are writing with six hands: Marc, the Father, mathematician and a little handyman in his spare time, Sasha, 12, and Félix, 8. We started by exploring some mathematical concepts from Koch's Snowflake, everyone brought a lot of enthusiasm to it and we ended up going much further than expected ... to Scratch programming, 3D printing, and ultimately writing this article. Suffice to say that we had a great time on this project ... and now we want to share it with you!
+Welcome! This is an article that we are writing with six hands: Marc, the Father, mathematician and a little handyman in his spare time, Sasha, 12, and Félix, 8. We started by exploring some mathematical concepts from the Koch Snowflake, everyone brought a lot of enthusiasm to it and we ended up going much further than expected ... to Scratch programming, 3D printing, and ultimately writing this article. Suffice to say that we had a great time on this project ... and now we want to share it with you!
 
 **Summary**
 - [Koch Snowflake](#koch-snowflake)
@@ -108,7 +108,7 @@ Snowflake of degree 119: 1325135298583788247187473125557188886870612922656714218
 Snowflake of degree 120: 5300541194335152988749892502228755547482451690626856874364818603877859328 sides, 36.81931252900848 cm2
 ```
 
-Mathematicians say that the area _converge_, and they even know how to calculate the value of the limit, equal to `2a²√3/5=36.819312529008464...`, cf. the article on [Koch's Snowflake](https://en.wikipedia.org/wiki/Koch_snowflake) at Wikipedia.
+Mathematicians say that the area _converge_, and they even know how to calculate the value of the limit, equal to `2a²√3/5=36.819312529008464...`, cf. the article on [Koch Snowflake](https://en.wikipedia.org/wiki/Koch_snowflake) at Wikipedia.
 
 The Koch snowflake is therefore an example of a shape with a finite area, and an infinite perimeter!
 
@@ -266,7 +266,7 @@ In fact, the fractal side of the 3D snowflake only appears when turned over! Fee
 
 ## Print the Snowflake
 
-We discovered 3D printing during the first containment ... It's very simple: the printer gradually builds the requested shape by melting a plastic wire. It's great ... but hey, it's a bit slow ... and not always easy to fix!
+We discovered 3D printing during the first lockdown ... It's very simple: the printer gradually builds the requested shape by melting a plastic wire. It's great ... but hey, it's a bit slow ... and not always easy to fix!
 
 In the case of Flocon 3D, the first problem we encountered was that our Flocon weighed 0 grams ... in other words, the printer did not print anything at all!
 
@@ -313,7 +313,7 @@ We have printed several models, modulating the size so that the base triangle is
 
 ## What to do with these Snowflakes?
 
-We found a lot of games to make with these coins!
+We found a lot of games to make with these snowflakes!
 
 ### Let's finish the Snowflake!
 
@@ -325,11 +325,11 @@ We only printed the _faces_ of the snowflake. Remember that the starting shape i
 
 ### Russian Dolls
 
-The small flakes hide in the big ones:
+The small snowflakes hide in the big ones:
 
 ![](images/poupees_russes.gif)
 
-### The Repeat Recurrence
+### The Recurrence
 
 With six small model faces, the large model can be reproduced. It's like in our OpenSCAD program!
 
@@ -341,7 +341,7 @@ With six small model faces, the large model can be reproduced. It's like in our 
 
 ### Hats
 
-The flakes also inspired our very young 3-year-old milliner:
+The snowflakes also inspired our very young 3-year-old milliner:
 
 ![](images/chapeaux.jpg)
 
